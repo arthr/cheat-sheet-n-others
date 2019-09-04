@@ -73,7 +73,8 @@ const Mask = function (v) {
 
 // Optimized Code - by me
 const toCurrency = (string) => {
-    let amount = new Number(string).toFixed(0);
+    string = string.replace(/\D/g, '');
+    let amount = (string.length >= 3) ? string : '000';
 
     const pattern = /^\$?(?<integers>\d{1,3}(\d{3})*\d{3}|\d+)(?<decimals>\,?\d{2})$/gm;
     const exec = pattern.exec(amount);
